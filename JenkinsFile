@@ -1,19 +1,29 @@
-pipeline:
-  agent any
+pipeline {
+    agent any
 
-  stages:
-    - stage: Checkout Code
-      steps:
-        - checkout scm
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+            }
+        }
 
-    - stage: Build
-      steps:
-        - echo "Building the project..."
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
 
-    - stage: Test
-      steps:
-        - echo "Running tests..."
-
-    - stage: Deploy
-      steps:
-        - echo "Deploying the project..."
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the project...'
+            }
+        }
+    }
+}
